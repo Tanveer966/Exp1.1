@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #3b3a3a;
+        }
+
+        form {
+            width: 500px;
+            margin: 100px auto;
+            padding: 50px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 12px 0;
+            box-sizing: border-box;
+        }
+
+        input:invalid {
+            border: 2px solid red;
+            background: #ffe6e6;
+        }
+
+        input:valid {
+            border: 2px solid green;
+            background: #e6ffe6;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: rgb(0, 34, 128);
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <h2>Student Registration</h2>
+
+        <!-- Invalid until correct name is entered -->
+        <input type="text" placeholder="Enter Name"
+               required pattern="[A-Za-z ]+">
+
+        <!-- Invalid until proper email format -->
+        <input type="email" placeholder="Enter Email" required>
+
+        <!-- Invalid if age < 18 -->
+        <input type="number" placeholder="Enter Age"
+               required min="18">
+
+        <button type="submit">Register</button>
+    </form>
+
+</body>
+
+</html>
