@@ -3,155 +3,68 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Banking App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial;
+            background: #3b3a3a;
         }
 
-        .bank {
-            width: 350px;
-            padding: 30px;
-            background: #ffffffdd;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        /* Hover effect */
-        .bank:hover {
-            transform: translateY(-5px);
-        }
-
-        h2 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        h3 {
-            margin-bottom: 20px;
-            color: #555;
+        form {
+            width: 500px;
+            margin: 100px auto;
+            padding: 50px;
+            background: white;
+            border-radius: 10px;
         }
 
         input {
-            padding: 12px;
-            width: 90%;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
+            width: 100%;
+            padding: 8px;
+            margin: 12px 0;
+            box-sizing: border-box;
         }
 
-        input:focus {
-            border-color: #74ebd5;
+        input:invalid {
+            border: 2px solid red;
+            background: #ffe6e6;
+        }
+
+        input:valid {
+            border: 2px solid green;
+            background: #e6ffe6;
         }
 
         button {
-            padding: 12px 20px;
-            width: 45%;
-            margin: 5px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            background: rgb(0, 34, 128);
             color: white;
-            transition: background 0.3s;
-        }
-
-        button#depositBtn {
-            background: #4CAF50;
-        }
-
-        button#depositBtn:hover {
-            background: #45a049;
-        }
-
-        button#withdrawBtn {
-            background: #f44336;
-        }
-
-        button#withdrawBtn:hover {
-            background: #e53935;
-        }
-
-        .message {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #333;
+            border: none;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="bank">
-        <h2>My Bank Account</h2>
-        <h3>Balance: ₹<span id="balance">2000</span></h3>
+    <form>
+        <h2>Student Registration</h2>
 
-        <input type="number" id="amount" placeholder="Enter Amount">
+        <!-- Invalid until correct name is entered -->
+        <input type="text" placeholder="Enter Name"
+               required pattern="[A-Za-z ]+">
 
-        <div>
-            <button id="depositBtn" onclick="deposit()">Deposit</button>
-            <button id="withdrawBtn" onclick="withdraw()">Withdraw</button>
-        </div>
+        <!-- Invalid until proper email format -->
+        <input type="email" placeholder="Enter Email" required>
 
-        <div class="message" id="message"></div>
-    </div>
+        <!-- Invalid if age < 18 -->
+        <input type="number" placeholder="Enter Age"
+               required min="18">
 
-    <script>
-        
-        let balance = 2000;
-
-        
-        function deposit() {
-            let amt = Number(document.getElementById("amount").value);
-            let message = document.getElementById("message");
-
-            if (amt > 0) {
-                balance += amt;
-                document.getElementById("balance").innerText = balance;
-                message.style.color = "green";
-                message.innerText = `₹${amt} deposited successfully!`;
-            } else {
-                message.style.color = "red";
-                message.innerText = "Please enter a valid amount!";
-            }
-
-            document.getElementById("amount").value = ""; // Clear input
-        }
-
-        
-        function withdraw() {
-            let amt = Number(document.getElementById("amount").value);
-            let message = document.getElementById("message");
-
-            if (amt > 0) {
-                if (amt <= balance) {
-                    balance -= amt;
-                    document.getElementById("balance").innerText = balance;
-                    message.style.color = "green";
-                    message.innerText = `₹${amt} withdrawn successfully!`;
-                } else {
-                    message.style.color = "red";
-                    message.innerText = "Insufficient Balance!";
-                }
-            } else {
-                message.style.color = "red";
-                message.innerText = "Please enter a valid amount!";
-            }
-
-            document.getElementById("amount").value = ""; // Clear input
-        }
-    </script>
+        <button type="submit">Register</button>
+    </form>
 
 </body>
 
